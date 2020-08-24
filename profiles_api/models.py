@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
-from validate_email import validate_email
 
 # Create your models here.
 class UserProfileManager(BaseUserManager):
@@ -12,10 +11,6 @@ class UserProfileManager(BaseUserManager):
         """Create a new user profile"""
         if not email:
             raise ValueError("Users must have an email address")
-
-        is_valid = validate_email(email, verify=True)
-        if is_valid is None:
-            raise ValueError("Invalid Email: Email Address Does Not Exists")
 
         email = self.normalize_email(email)
         user = self.model(email=email, name=name)
