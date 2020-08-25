@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'profiles_api',
     'rest_framework_api_key',
     'multiple_permissions',
+    'admin_honeypot',
 ]
 
 MIDDLEWARE = [
