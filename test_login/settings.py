@@ -146,4 +146,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'profiles_api.UserProfile'
+
+ADMINS = (('Foo', 'kamarul.adha360@gmail.com'), )
+
+
 django_heroku.settings(locals())
