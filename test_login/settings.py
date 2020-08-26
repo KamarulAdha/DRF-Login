@@ -156,7 +156,8 @@ STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'profiles_api.UserProfile'
 
-ADMINS = (('Kamarul Adha', 'kamarul.adha360@gmail.com'), ('Zulhunis', 'zulhresident@gmail.com'), ('Haziq', 'haziqazfar041@gmail.com'), )
+ADMINS = (('Kamarul Adha', 'kamarul.adha360@gmail.com'), )
+# ADMINS = (('Kamarul Adha', 'kamarul.adha360@gmail.com'), ('Zulhunis', 'zulhresident@gmail.com'), ('Haziq', 'haziqazfar041@gmail.com'), )
 
 
 django_heroku.settings(locals())
