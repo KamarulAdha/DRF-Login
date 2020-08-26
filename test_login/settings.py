@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = '#90jo1a43r0yb!6rkqw#=3f1$b#4d=*3hj@ctqaea#o(i6dj$e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['https://jwt-test-login.herokuapp.com/']
 
@@ -142,12 +142,21 @@ SIMPLE_JWT = {
 
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = ' hirodelinoreply@gmail.com'
+EMAIL_HOST_PASSWORD = 'Qwerty1@345'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'profiles_api.UserProfile'
 
-# ADMINS = (('Kamarul Adha', 'kamarul.adha360@gmail.com'), )
+ADMINS = (('Kamarul Adha', 'kamarul.adha360@gmail.com'), )
 
 
 django_heroku.settings(locals())
