@@ -136,8 +136,9 @@ REST_FRAMEWORK = {
     # ),
 }
 
-API_KEY_CUSTOM_HEADER = "HTTP_X_API_KEY"
-
+API_KEY_CUSTOM_HEADER = "HTTP_X_HIRO_DELI_API_AUTH_X"
+# X-Api-Key <--Header
+#X-Hiro-Deli-Api-Auth-X
 
 
 SIMPLE_JWT = {
