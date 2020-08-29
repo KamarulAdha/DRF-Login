@@ -52,8 +52,8 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.UserProfileSerializer
     queryset = models.UserProfile.objects.all()
     # authentication_classes = (TokenAuthentication,)
-    permission_classes = (permissions.UpdateOwnProfile,)
-    # permission_classes = [HasAPIKey & UpdateOwnProfile]
+    # permission_classes = (permissions.UpdateOwnProfile,)
+    permission_classes = [HasAPIKey & UpdateOwnProfile]
     # permission_classes = And(HasAPIKey, UpdateOwnProfile),
     # permission_classes = ((UpdateOwnProfile & HasAPIKey),)
     filter_backends = (filters.SearchFilter,)
