@@ -136,6 +136,10 @@ REST_FRAMEWORK = {
     # ),
 }
 
+API_KEY_CUSTOM_HEADER = "HTTP_X_API_KEY"
+
+
+
 SIMPLE_JWT = {
    'AUTH_HEADER_TYPES': ('JWT',),
    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10080),

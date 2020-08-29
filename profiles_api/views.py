@@ -24,6 +24,8 @@ from rest_condition import ConditionalPermission, C, And, Or, Not
 class HelloApiView(APIView):
     """Test API View"""
     serializer_class = serializers.HelloSerializer
+    permission_classes = [HasAPIKey & IsAuthenticated]
+    # permission_classes = (HasAPIKey,)
     def get(self, request, format=None):
         """Returns a list of APIView features"""
         an_apiview = [
