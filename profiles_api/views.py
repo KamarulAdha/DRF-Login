@@ -12,14 +12,21 @@ from profiles_api.permissions import UpdateOwnProfile
 from rest_framework import viewsets
 from rest_framework import filters
 from rest_framework.authentication import TokenAuthentication
-# from rest_framework.permissions import IsAuthenticated
-from multiple_permissions.permissions import IsAuthenticated
-
-from rest_framework.authtoken.views import ObtainAuthToken
-from rest_framework.settings import api_settings
+from rest_framework.permissions import IsAuthenticated
 from rest_framework_api_key.permissions import HasAPIKey
 
-from rest_condition import ConditionalPermission, C, And, Or, Not
+from rest_framework import generics, status
+# from rest_framework.response import Response
+# from rest_framework_simplejwt.authentication import AUTH_HEADER_TYPES
+# from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
+# from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.views import(
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+# from rest_framework_simplejwt.views import TokenRefreshView
+
+
 # Create your views here.
 class HelloApiView(APIView):
     """Test API View"""
@@ -53,15 +60,24 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     """Handle creating and updating profiles"""
     serializer_class = serializers.UserProfileSerializer
     queryset = models.UserProfile.objects.all()
-    # authentication_classes = (TokenAuthentication,)
-    # permission_classes = (permissions.UpdateOwnProfile,)
     permission_classes = [HasAPIKey & UpdateOwnProfile]
-    # permission_classes = And(HasAPIKey, UpdateOwnProfile),
-    # permission_classes = ((UpdateOwnProfile & HasAPIKey),)
     filter_backends = (filters.SearchFilter,)
     search_fields = ('name', 'email',)
 
 
-# class UserLoginApiView(ObtainAuthToken):
-#     """Handle creating user authentication tokens"""
-#     renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
+class NewTokenObtainPairView(TokenObtainPairView):
+    """
+    Takes a set of user credentials and returns an access and refresh JSON web
+    token pair to prove the authentication of those credentials.
+    """
+    permission_classes = (HasAPIKey,)
+    # serializer_class = TokenObtainPairSerializer
+
+
+class NewTokenRefreshView(TokenRefreshView):
+    """
+    Takes a refresh type JSON web token and returns an access type JSON web
+    token if the refresh token is valid.
+    """
+    permission_classes = (HasAPIKey,)
+    # serializer_class = serializers.TokenRefreshSerializer

@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'rest_framework_api_key',
     'multiple_permissions',
     'admin_honeypot',
+    'rest_framework_simplejwt.token_blacklist',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
@@ -114,8 +116,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-# TIME_ZONE = 'Asia/Kuala_Lumpur'
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kuala_Lumpur'
+# TIME_ZONE = 'UTC'
+PHONENUMBER_DEFAULT_REGION = 'MY'
 
 USE_I18N = True
 
@@ -128,12 +131,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework_api_key.permissions.HasAPIKey',
+),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-    # 'DEFAULT_PERMISSION_CLASSES': (
-    #     'rest_framework_api_key.permissions.HasAPIKey',
-    # ),
 }
 
 API_KEY_CUSTOM_HEADER = "HTTP_X_HIRO_DELI_API_AUTH_X"
@@ -145,7 +148,7 @@ SIMPLE_JWT = {
    'AUTH_HEADER_TYPES': ('JWT',),
    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10080),
    'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
-   'ROTATE_REFRESH_TOKENS': False,
+   'ROTATE_REFRESH_TOKENS': True,
    'BLACKLIST_AFTER_ROTATION': True,
 
 }
@@ -164,8 +167,16 @@ STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'profiles_api.UserProfile'
 
-ADMINS = (('Kamarul Adha', 'kamarul.adha360@gmail.com'), )
-# ADMINS = (('Kamarul Adha', 'kamarul.adha360@gmail.com'), ('Zulhunis', 'zulhresident@gmail.com'), ('Haziq', 'haziqazfar041@gmail.com'), )
+# ADMINS = (('Kamarul Adha', 'kamarul.adha360@gmail.com'), )
+ADMINS = (
+            ('Kamarul Adha', 'kamarul.adha360@gmail.com'),
+            # ('Zulhunis', 'zulhresident@gmail.com'),
+            # ('Haziq', 'haziqazfar041@gmail.com'),
+            # ('Syaza', 'nursyazaaqilahm@gmail.com'),
+            # ('Aiman', 'zaiman670@gmail.com'),
+            # ('Ida', 'yuukionna13@gmail.com'),
+            # ('Ihsan', 'aihsan657@gmail.com'),
+        )
 
 
 django_heroku.settings(locals())

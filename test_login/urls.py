@@ -21,12 +21,18 @@ from rest_framework_simplejwt.views import(
     TokenRefreshView,
 )
 
+from profiles_api.views import(
+    NewTokenObtainPairView,
+    NewTokenRefreshView,
+)
+
 urlpatterns = [
     path('secret/', admin.site.urls),
     path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
     path('api/', include('profiles_api.urls')),
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-
+    # path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/', NewTokenObtainPairView.as_view(), name='new_token_obtain_pair'),
+    # path('api/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/refresh/', NewTokenRefreshView.as_view(), name='new_token_refresh'),
 
 ]
