@@ -28,6 +28,7 @@ from profiles_api.views import(
 
 urlpatterns = [
     # path('secret/', admin.site.urls),
+    path('secret/',)
     path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
     path('api/', include('profiles_api.urls')),
     # path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
