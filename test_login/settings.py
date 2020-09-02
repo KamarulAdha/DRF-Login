@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'phonenumber_field',
 ]
 
+AUTH_USER_MODEL = 'profiles_api.UserProfile'
+
 MIDDLEWARE = [
     'multiple_permissions.middlewares.PermissionMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -165,7 +167,6 @@ EMAIL_USE_SSL = False
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-AUTH_USER_MODEL = 'profiles_api.UserProfile'
 
 # ADMINS = (('Kamarul Adha', 'kamarul.adha360@gmail.com'), )
 ADMINS = (
