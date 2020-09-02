@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = '#90jo1a43r0yb!6rkqw#=3f1$b#4d=*3hj@ctqaea#o(i6dj$e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['https://jwt-test-login.herokuapp.com/']
 
