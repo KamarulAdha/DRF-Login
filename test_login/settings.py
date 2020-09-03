@@ -50,7 +50,7 @@ INSTALLED_APPS = [
 ]
 
 AUTH_USER_MODEL = 'profiles_api.UserProfile'
-
+# DATE_INPUT_FORMATS = ['%d-%m-%Y']
 MIDDLEWARE = [
     'multiple_permissions.middlewares.PermissionMiddleware',
     'django.middleware.security.SecurityMiddleware',
