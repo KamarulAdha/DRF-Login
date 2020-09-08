@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '#90jo1a43r0yb!6rkqw#=3f1$b#4d=*3hj@ctqaea#o(i6dj$e'
+SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -118,9 +118,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Kuala_Lumpur'
-# TIME_ZONE = 'UTC'
-PHONENUMBER_DEFAULT_REGION = 'MY'
+
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -133,6 +132,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 REST_FRAMEWORK = {
+    'DATE_INPUT_FORMATS': [("%d-%m-%Y"),],
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework_api_key.permissions.HasAPIKey',
 ),
@@ -141,9 +141,9 @@ REST_FRAMEWORK = {
     ),
 }
 
-API_KEY_CUSTOM_HEADER = "HTTP_X_HIRO_DELI_API_AUTH_X"
+API_KEY_CUSTOM_HEADER = ""
 # X-Api-Key <--Header
-#X-Hiro-Deli-Api-Auth-X
+
 
 
 SIMPLE_JWT = {
@@ -155,10 +155,10 @@ SIMPLE_JWT = {
 
 }
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'hirodelinoreply@gmail.com'
-EMAIL_HOST_PASSWORD = 'Qwerty1@345'
+EMAIL_BACKEND = ''
+EMAIL_HOST = ''
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
@@ -167,17 +167,10 @@ EMAIL_USE_SSL = False
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
-# ADMINS = (('Kamarul Adha', 'kamarul.adha360@gmail.com'), )
-ADMINS = (
-            ('Kamarul Adha', 'kamarul.adha360@gmail.com'),
-            # ('Zulhunis', 'zulhresident@gmail.com'),
-            # ('Haziq', 'haziqazfar041@gmail.com'),
-            # ('Syaza', 'nursyazaaqilahm@gmail.com'),
-            # ('Aiman', 'zaiman670@gmail.com'),
-            # ('Ida', 'yuukionna13@gmail.com'),
-            # ('Ihsan', 'aihsan657@gmail.com'),
-        )
+
 
 
 django_heroku.settings(locals())

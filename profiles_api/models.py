@@ -73,8 +73,8 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
         return self.email
 
 
-# class ExtraInfo(models.Model):
-#     user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)
-#     bio = models.TextField(max_length=500, blank=True)
-#     birth_date = models.DateField(input_formats=settings.DATE_INPUT_FORMATS, null=True, blank=True)
-#     profile_pic = models.ImageField(upload_to='profile_pics/', blank=True, null=True, default='./static/defaul.png/')
+class ExtraInfo(models.Model):
+    user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)
+    bio = models.TextField(max_length=500, blank=True)
+    birth_date = models.DateField(null=True, blank=True)
+    profile_pic = models.ImageField(upload_to='profile_pics/', blank=True, null=True)

@@ -15,6 +15,8 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_api_key.permissions import HasAPIKey
 
+from profiles_api.models import ExtraInfo
+
 from rest_framework import generics, status
 # from rest_framework.response import Response
 # from rest_framework_simplejwt.authentication import AUTH_HEADER_TYPES
@@ -81,3 +83,9 @@ class NewTokenRefreshView(TokenRefreshView):
     """
     permission_classes = (HasAPIKey,)
     # serializer_class = serializers.TokenRefreshSerializer
+
+
+class ExtraInfoViewSet(UserProfileViewSet):
+    permission_classes = [HasAPIKey & IsAuthenticated]
+    queryset = ExtraInfo.objects.all()
+    serializer_class = serializers.ExtraInfoSerializer

@@ -30,3 +30,11 @@ class UserProfileSerializer(serializers.ModelSerializer):
         )
 
         return user
+
+
+class ExtraInfoSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.ExtraInfo
+        fields = ('id', 'bio', 'birth_date', 'profile_pic')
+        read_only_fields = ('id',)
